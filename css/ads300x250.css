@@ -1,0 +1,7 @@
+.ads300x250 {
+    width: 300px;
+    height: 250px;
+    float: left;
+    background-color: #ddd;
+    text-decoration: line-through;
+}

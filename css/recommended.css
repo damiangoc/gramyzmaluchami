@@ -1,0 +1,19 @@
+.recommended-list {
+    float: left;
+    height: 250px;
+    margin: 0 30px 10px 20px;
+    width: 250px;
+}
+
+.recommended-list ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.recommended-list ul li {
+    list-style-image: url("/images/kropka.png");
+    /*list-style-position: inside;*/
+    margin: 0 0 0 10px;
+    font-size: 13px;
+    line-height: 20px;
+}

@@ -4,27 +4,59 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+        background: url(/images/bg.gif) repeat-x scroll left top #508ebf;
+        
+}
+
+.page-background {
+    background: url(/images/ryba.png) repeat-x fixed left bottom;
 }
 
 #page
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background: white;
-	border: 1px solid #C9E0ED;
+	border: 5px solid #508ebf;
 }
 
-#header
-{
+#page, #page .container {
+        width: 960px;
+}
+
+#header {
+    overflow: hidden;
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+        background-color: #FFF;
 }
 
 #content
 {
-    padding: 20px;
+    background-color: #eef;
+    overflow: hidden;
+}
+
+#content .center-content {
+    border-left: 1px solid #85bad8;
+    border-right: 1px solid #85bad8;
+    float: left;
+    margin-left: -1px;
+    overflow: hidden;
+    padding: 15px 10px 15px 0;
+    width: 601px;
+    background-color: #f8f8ea;
+}
+
+#content .center-content hr {
+    margin: 0 0 10px 10px;
+    overflow: hidden;
+    width: 590px;
+}
+#content .right-content {
+    overflow: hidden;
+    float: right;
+    background-color: #ccc;
+    width: 160px;
 }
 
 #sidebar
@@ -43,8 +75,20 @@ body
 
 #logo
 {
-	padding: 10px 20px;
-	font-size: 200%;
+	padding: 10px;
+}
+
+#logo .left {
+    float: left;
+}
+
+#logo .left h1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+#logo .right {
+    float: right;
 }
 
 #mainmenu

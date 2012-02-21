@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Świat gier i zabaw dla dzieci',
+	'name'=>'Pomysły na gry oraz zabawy dla dzieci.',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -49,10 +49,10 @@ return array(
 		),
 */		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=swiatgier',
+			'connectionString' => 'mysql:host=localhost;dbname=maluchy',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'damian1',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -77,6 +77,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@swiatgierdladzieci.pl',
+		'adminEmail'=>'webmaster@gramyzmaluchami.pl',
 	),
 );

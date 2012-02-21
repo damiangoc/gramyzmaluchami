@@ -1,0 +1,36 @@
+.top5box {
+    float: left;
+    width: 268px;
+    margin: 0 0 10px 10px;
+    border: 1px solid #85bad8;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px;
+    background-color: #d0d9ff;
+}
+
+.top5box .title-right {
+    float: right;
+}
+
+.top5box .title-left {
+    float: left;
+    color: #060;
+    font-weight: bold;
+}
+
+.top5box .list {
+    clear: both;
+}
+
+.top5box .list ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.top5box .list ul li {
+    list-style-image: url("/images/kropka.png");
+    line-height: 20px;
+    margin: 0 0 0 10px;
+    color: #333;
+    font-size: 12px;
+}
