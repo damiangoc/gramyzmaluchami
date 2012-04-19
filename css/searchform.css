@@ -1,0 +1,54 @@
+.horizontal-form {
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.vertical-form h4, .horizontal-form h4  {
+    font-size: 1.2em;
+    line-height: 1.25;
+    margin-bottom: 1em;
+    font-weight: bold;
+    color: #555;
+}
+.horizontal-form h4 {
+    float: left;
+    margin-bottom: 0px;
+    line-height: 1.6;
+    margin-right: 20px;
+}
+.vertical-form form input, .vertical-form form select,
+.horizontal-form form input, .horizontal-form form select {
+    font-size: 13px;
+    color: #555555;    
+    border: 1px solid #85BAD8;
+    margin-bottom: 10px;
+    display: block;
+    padding: 4px;
+    float: right;
+}
+.horizontal-form form input, .horizontal-form form select {
+    float: left;
+    margin-left: 10px;
+}
+.vertical-form input[type="text"] {
+    width: 146px;
+}
+.horizontal-form input[type="text"] {
+    width: 200px;
+}
+.vertical-form select {
+    width: 156px;    
+}
+.horizontal-form select {
+    width: 190px;    
+    height: 26px;
+}
+
+.vertical-form input[type="submit"],
+.horizontal-form input[type="submit"] {
+    background-color: #D0D9FF;
+    height: 26px;    
+}
+.horizontal-form input[type="submit"] {
+    width: 100px;
+}

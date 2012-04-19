@@ -99,9 +99,11 @@ class CBreadcrumbs extends CWidget
 
 		echo CHtml::openTag($this->tagName,$this->htmlOptions)."\n";
 		$links=array();
-		if($this->homeLink===null)
-			$links[]=CHtml::link(Yii::t('zii','Home'),Yii::app()->homeUrl);
-		else if($this->homeLink!==false)
+		if($this->homeLink===null) {
+                    $homeIcon = '<img src="/images/icons/home2.ico" class="home-icon" />';
+                    
+			$links[]=CHtml::link(Yii::t('zii','Strona Główna'),Yii::app()->homeUrl);
+                } else if($this->homeLink!==false)
 			$links[]=$this->homeLink;
 		foreach($this->links as $label=>$url)
 		{
@@ -110,7 +112,8 @@ class CBreadcrumbs extends CWidget
 			else
 				$links[]='<span>'.($this->encodeLabel ? CHtml::encode($url) : $url).'</span>';
 		}
-		echo implode($this->separator,$links);
+                
+		echo '<div class="breadlinks">' . $homeIcon . implode($this->separator,$links) . '</div>';
 		echo CHtml::closeTag($this->tagName);
 	}
 }

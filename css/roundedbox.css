@@ -1,0 +1,60 @@
+.roundedbox {
+    float: left;
+    width: 273px;
+    margin: 0 0 10px 10px;
+    border: 1px solid #85bad8;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px;
+    background-color: #d0d9ff;
+}
+
+.roundedbox .title-right {
+    float: right;
+}
+
+.roundedbox .title-left {
+    float: left;
+    color: #060;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.roundedbox .list {
+    clear: both;
+}
+.roundedbox .list.left {
+    float: left;
+    clear: none;
+}
+
+
+.roundedbox .list ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+.roundedbox .list ul li {
+    list-style-image: url("/images/kropka.png");
+    line-height: 20px;
+    margin: 0 0 0 10px;
+    color: #2C71A5;
+    font-size: 13px;
+    font-weight: bold;
+    
+}
+
+.roundedbox .list ul li a {
+    text-decoration: none;
+}
+
+.roundedbox .list ul li a:hover {
+    color: #2C71A5;
+}
+.roundedbox .more-link {
+    float: right;
+    margin-top: 10px;
+}
+.roundedbox .more-link a {
+    color: #BC0101;
+    text-decoration: none;
+}

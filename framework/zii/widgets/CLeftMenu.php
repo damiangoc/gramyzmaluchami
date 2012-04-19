@@ -22,7 +22,7 @@ class CLeftMenu extends CWidget {
             echo '<div class="agelevel"><span>Dzieci w wieku:</span><img src="/images/' . $agelevelTitle . '.png" /></div>';
             echo '<div class="category"><ul>';
             foreach ($categories as $category) {
-                echo '<li>' . $category['name'] . '</li>';
+                echo '<li><a href="' . Yii::app()->createUrl('category/view/', array('id' =>$category['catid'], 'name' => $category['name'])) . '">' . $category['name'] .'</a></li>';
             }
             echo '</ul><hr /></div>';
         }

@@ -1,26 +1,35 @@
 <?php
+$ageLevel = 'Kategorie dla ' . $gameData['menuTitle'];
+$ageLink = Yii::app()->createUrl('agelevel/view/', array('id' => $gameData['menuId'], 'name' => $gameData['menuTitle']));
+$categoryLink = Yii::app()->createUrl('category/view/', array('id' => $gameData['catid'], 'name' => $gameData['catname']));
+
 $this->breadcrumbs=array(
-	'Games'=>array('index'),
-	$model->name,
+    $ageLevel => $ageLink,
+    $gameData['catname'] => $categoryLink,
+    $gameData['name'],
 );
 
-$this->menu=array(
-	array('label'=>'List Game', 'url'=>array('index')),
-	array('label'=>'Create Game', 'url'=>array('create')),
-	array('label'=>'Update Game', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Game', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Game', 'url'=>array('admin')),
-);
-?>
+Yii::app()->clientScript->registerCssFile('/css/roundedbox.css');
+Yii::app()->clientScript->registerCssFile('/css/gamebox.css');
 
-<h1>View Game #<?php echo $model->id; ?></h1>
+$this->widget('zii.widgets.CLeftMenu');
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'categoryId',
-		'name',
-		'description',
-	),
-)); ?>
+echo '<div class="center-content">';
+
+    $this->widget('zii.widgets.CBreadcrumbs', array(
+        'links' => $this->breadcrumbs,
+    ));
+
+    $this->widget('zii.widgets.CDescrHeader', array(
+        'htmlOptions' => array('class' => 'descr-header blue-bg'),
+        'H2Class' => array('class' => 'blue'),
+        'dataProvider' => array(
+            'header' => $gameData['name'],
+            'content' => ''
+        ),
+    ));
+
+    echo '<div class="game-descr">' . $gameData['description'] . '</div>';
+echo '</div>';
+
+$this->widget('zii.widgets.CRightMenu');

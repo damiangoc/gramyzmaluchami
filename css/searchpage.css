@@ -1,0 +1,22 @@
+.roundedbox {
+    height: 120px;
+    width: 360px;
+}
+
+.roundedbox .gamedescr {
+    margin-top: 5px;
+    height: 48px;
+    clear: both;
+}
+
+#content .center-content {
+    width: 788px;
+    border-right: none;
+}
+
+.resultsphrase {
+    clear: both;
+    line-height: 30px;
+    padding-left: 10px;
+    margin-bottom: 10px; 
+}

@@ -1,0 +1,9 @@
+.ads728x90 {
+    clear: both;
+    width: 728px;
+    height: 90px;
+    background-color: #ddd;
+    text-decoration: line-through;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}

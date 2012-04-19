@@ -20,7 +20,7 @@ body
 }
 
 #page, #page .container {
-        width: 960px;
+        width: 970px;
 }
 
 #header {
@@ -43,20 +43,21 @@ body
     margin-left: -1px;
     overflow: hidden;
     padding: 15px 10px 15px 0;
-    width: 601px;
+    width: 611px;
     background-color: #f8f8ea;
+    min-height: 700px;
 }
 
 #content .center-content hr {
     margin: 0 0 10px 10px;
     overflow: hidden;
-    width: 590px;
+    width: 600px;
 }
 #content .right-content {
     overflow: hidden;
     float: right;
-    background-color: #ccc;
-    width: 160px;
+    padding: 15px 10px;
+    width: 156px;
 }
 
 #sidebar
@@ -94,6 +95,7 @@ body
 #mainmenu
 {
 	background:white url(bg.gif) repeat-x left top;
+        position: relative;
 }
 
 #mainmenu ul
@@ -117,6 +119,11 @@ body
 	padding:5px 8px;
 }
 
+#mainmenu ul li a img {
+    width: 17px;
+    height: 18px;
+}
+
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
 	color: #6399cd;
@@ -124,6 +131,22 @@ body
 	text-decoration:none;
 }
 
+#mainmenu .menu-ages {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+#mainmenu .menu-ages span {
+    line-height: 18px;
+    color: #FFF;
+}
+
+#mainmenu .menu-ages img {
+    height: 18px;
+    width: 17px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;
@@ -182,12 +205,27 @@ div.view
 div.breadcrumbs
 {
 	font-size: 0.9em;
-	padding: 5px 20px;
+	padding: 0px 0px 10px 0px;
+        border-bottom: 1px solid #DDD;
+        margin: 0px 0px 20px 10px;
+        text-align: right;
 }
 
 div.breadcrumbs span
 {
 	font-weight: bold;
+}
+
+.home-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.breadlinks {
+    display: block;
+    line-height: 18px;
 }
 
 div.search-form
@@ -271,3 +309,4 @@ div.search-form
 {
 	background: #80CFFF;
 }
+

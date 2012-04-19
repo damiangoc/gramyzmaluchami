@@ -1,0 +1,35 @@
+.descr-header {
+    clear: both;
+    margin: 10px 0 20px 10px;
+    padding: 10px;
+}
+.green-bg {
+    background-color: #BBF9BB;
+    border-bottom: 1px solid #86D686;
+    border-top: 1px solid #86D686;
+}
+
+.blue-bg {
+    background-color: #D0D9FF;
+    border-bottom: 1px solid #85BAD8;
+    border-top: 1px solid #85BAD8;
+}
+.descr-header h2 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.25;
+}
+
+.descr-header .descr-content {
+    line-height: 18px;
+    padding: 10px 0 0;
+}
+
+h2.green {
+    color: #006600;
+}
+
+h2.blue {
+    color: #2C71A5;
+}

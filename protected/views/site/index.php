@@ -1,7 +1,5 @@
 <?php 
-$this->widget('zii.widgets.CLeftMenu', array(
-    //'dataProvider' => $dataProvider,
-));
+$this->widget('zii.widgets.CLeftMenu');
 
 echo '<div class="center-content">';
     $this->widget('zii.widgets.CRecommendedList', array(
@@ -16,5 +14,4 @@ echo '<div class="center-content">';
     }
 echo '</div>';
 
-echo '<div class="right-content">asdasdasdasd';
-echo '</div>';
+$this->widget('zii.widgets.CRightMenu');

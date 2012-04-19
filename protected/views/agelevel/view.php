@@ -1,24 +1,21 @@
 <?php
 $this->breadcrumbs=array(
-	'Agelevels'=>array('index'),
-	$model->id,
+    'Kategorie dla ' . $top5boxes[0]['menuTitle'],
 );
 
-$this->menu=array(
-	array('label'=>'List Agelevel', 'url'=>array('index')),
-	array('label'=>'Create Agelevel', 'url'=>array('create')),
-	array('label'=>'Update Agelevel', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Agelevel', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Agelevel', 'url'=>array('admin')),
-);
-?>
+$this->widget('zii.widgets.CLeftMenu');
 
-<h1>View Agelevel #<?php echo $model->id; ?></h1>
+echo '<div class="center-content">';
+    $this->widget('zii.widgets.CBreadcrumbs', array(
+        'links' => $this->breadcrumbs,
+    ));
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'menuTitle',
-	),
-)); ?>
+    
+    foreach ($top5boxes as $top5box) {
+        $this->widget('zii.widgets.CTop5box', array(
+            'dataProvider' => $top5box));
+    }
+
+echo '</div>';
+
+$this->widget('zii.widgets.CRightMenu');

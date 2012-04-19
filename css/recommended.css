@@ -5,6 +5,12 @@
     width: 250px;
 }
 
+.recommended-list h4 {
+    font-weight: bold;
+    color: #555555;
+    margin-bottom: 1em;
+}
+
 .recommended-list ul {
     margin: 0;
     padding: 0 0 0 10px;
@@ -16,4 +22,14 @@
     margin: 0 0 0 10px;
     font-size: 13px;
     line-height: 20px;
+    color: #2C71A5;
+    font-weight: bold;
+}
+
+.recommended-list ul li a {
+    text-decoration: none;
+}
+
+.recommended-list ul li a:hover {
+    color: #2C71A5;
 }

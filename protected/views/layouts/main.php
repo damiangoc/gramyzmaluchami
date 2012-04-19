@@ -27,10 +27,10 @@
                         <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
                     </div>
                     <div class="right">
-                        <img src="/images/inga2.jpg">
-                        <img src="/images/inga2.jpg">
-                        <img src="/images/inga2.jpg">
-                        <img src="/images/inga2.jpg">
+                        <img src="/images/inga.png" />
+                        <img src="/images/piotrus.png" />
+                        <img src="/images/nati.png" />
+                        <img src="/images/mati.png" />
                     </div>
                 </div>
             </div><!-- header -->
@@ -38,23 +38,18 @@
             <div id="mainmenu">
                 <?php
                 $this->widget('zii.widgets.CMenu', array(
+                    'encodeLabel'=>false,
                     'items' => array(
-                        array('label' => 'Home', 'url' => array('/site/index')),
-                        array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
-                        array('label' => 'Contact', 'url' => array('/site/contact')),
-                        array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-                        array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+                        array('label' => 'Strona Główna', 'url' => array('/site/index')),
+//                        array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
+                        array('label' => 'Kontakt', 'url' => array('/site/contact')),
+//                        array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+//                        array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                     ),
                 ));
                 ?>
+                <?php $this->widget('zii.widgets.CMenuAges');?>
             </div><!-- mainmenu -->
-            <?php if (isset($this->breadcrumbs)): ?>
-                <?php
-                $this->widget('zii.widgets.CBreadcrumbs', array(
-                    'links' => $this->breadcrumbs,
-                ));
-                ?><!-- breadcrumbs -->
-            <?php endif ?>
 
             <?php echo $content; ?>
 

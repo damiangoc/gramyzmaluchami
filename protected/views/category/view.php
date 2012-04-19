@@ -1,27 +1,46 @@
 <?php
+$ageLevel = 'Kategorie dla ' . $categoryData['menuTitle'];
+$ageLink = Yii::app()->createUrl('agelevel/view/', array('id' => $categoryData['menuId'], 'name' => $categoryData['menuTitle']));
+
 $this->breadcrumbs=array(
-	'Categories'=>array('index'),
-	$model->name,
+    $ageLevel => $ageLink,
+    $categoryData['categoryname']
 );
+Yii::app()->clientScript->registerCssFile('/css/roundedbox.css');
+Yii::app()->clientScript->registerCssFile('/css/searchpage.css');
 
-$this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
-	array('label'=>'Update Category', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Category', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Category', 'url'=>array('admin')),
-);
-?>
+$this->widget('zii.widgets.CLeftMenu');
 
-<h1>View Category #<?php echo $model->id; ?></h1>
+echo '<div class="center-content">';
+    $this->widget('zii.widgets.CBreadcrumbs', array(
+        'links' => $this->breadcrumbs,
+    ));
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'agelevelId',
-		'name',
-		'description',
-		'active',
-	),
-)); ?>
+    $this->widget('zii.widgets.CSearchForm', array(
+        'htmlOptions' => array('class' => 'horizontal-form')));
+
+    $this->widget('zii.widgets.CDescrHeader', array(
+        'htmlOptions' => array('class' => 'descr-header green-bg'),
+        'H2Class' => array('class' => 'green'),
+        'dataProvider' => array(
+            'header' => $categoryData['categoryname'],
+            'content' => $categoryData['catdescr']
+        ),
+    ));
+
+    if (count($results)) {
+        $this->widget('CLinkPager', array(
+                'currentPage'=>$pages->getCurrentPage(),
+                'itemCount'=>$item_count,
+                'maxButtonCount'=>6,
+                'nextPageLabel'=>'My text &gt;',
+                'header'=>'',
+        ));
+        foreach ($results as $result) {
+            $this->widget('zii.widgets.CResultBox', array(
+                'dataProvider' => $result));
+        }
+    } else {
+        echo '<div class="resultsphrase">Brak gier w kategorii</div>';    
+    }
+echo '</div>';

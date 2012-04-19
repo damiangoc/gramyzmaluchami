@@ -38,7 +38,7 @@ class SiteController extends Controller {
         $catsCount = count($top5categories);
         for($i = 0; $i < $catsCount; $i++) {
             $top5games = Yii::app()->db->createCommand()
-                ->select('g.name, g.description, tg.position')
+                ->select('g.id, g.name, g.description, tg.position')
                 ->from('top5game tg')
                 ->join('category c', 'tg.categoryId=c.id')
                 ->join('game g', 'tg.gameId=g.id')

@@ -8,7 +8,7 @@ class CRecommendedList extends CWidget {
     public function init() {
         //get top5categories
         $recommended = Yii::app()->db->createCommand()
-            ->select('g.name, g.description')
+            ->select('g.id, g.name, g.description')
             ->from('recommended r')
             ->join('game g', 'r.gameId=g.id')
             ->order('r.id')
@@ -19,7 +19,7 @@ class CRecommendedList extends CWidget {
         echo '<h4>Polecane zabawy</h4>';
         echo '<ul>';
         foreach ($recommended as $game) {
-            echo '<li>' . $game['name'] . '</li>';
+            echo '<li><a href="' . Yii::app()->createUrl('game/view/', array('id' =>$game['id'], 'name' => $game['name'])) . '">' . $game['name'] . '</a></li>';
         }
         echo '</ul>';
         echo CHtml::closeTag($this->tagName);

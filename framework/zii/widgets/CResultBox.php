@@ -1,5 +1,5 @@
 <?php
-class CTop5box extends CWidget {
+class CResultBox extends CWidget {
 
     /**
      * @var string the tag name for the breadcrumbs container tag. Defaults to 'div'.
@@ -54,16 +54,22 @@ class CTop5box extends CWidget {
      * Renders the content of the portlet.
      */
     public function run() {
-        Yii::app()->clientScript->registerCssFile('/css/roundedbox.css');
+        $additionalClass = array('list');
         echo CHtml::openTag($this->tagName, $this->htmlOptions) . "\n";
-        echo '<div class="title-right"><img src="/images/' . $this->dataProvider['menuTitle'] . '.png" /></div>';
-        echo '<div class="title-left">' . $this->dataProvider['name'] . '</div>';
-        echo '<div class="list"><ul>';
-        foreach ($this->dataProvider['games'] as $key => $game) {
-            echo '<li><a href="' . Yii::app()->createUrl('game/view/', array('id' =>$game['id'], 'name' => $game['name'])) . '">' . $game['name'] . '</a></li>';
+        if (isset($this->dataProvider['menuTitle'])) {
+            echo '<div class="title-right"><img src="/images/' . $this->dataProvider['menuTitle'] . '.png" /></div>';
         }
+        if (isset($this->dataProvider['catname'])) {
+            echo '<div class="title-left">' . $this->dataProvider['catname'] . '</div>';
+        } else {
+            $additionalClass[] = 'left';
+        }
+        
+        echo '<div class="' . implode(' ', $additionalClass) . '"><ul>';
+        echo '<li>' . $this->dataProvider['name'] . '</li>';
         echo '</ul></div>';
-        echo '<div class="more-link"><a href="' . Yii::app()->createUrl('category/view/', array('id' => $this->dataProvider['id'], 'name' => 1)) . '">więcej gier w ' . $this->dataProvider['name'] . '</a></div>';
+        echo '<div class="gamedescr">' . $this->dataProvider['description'] . '</div>';
+        echo '<div class="more-link"><a href="' . Yii::app()->createUrl('game/view/', array('id' =>$this->dataProvider['id'], 'name' => $this->dataProvider['name'])) . '">czytaj więcej</a></div>';
         echo CHtml::closeTag($this->tagName);
     }
 }
