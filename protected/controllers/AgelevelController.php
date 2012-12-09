@@ -52,6 +52,7 @@ class AgelevelController extends Controller {
             ->join('category c', 'c.agelevelId=a.id')
             ->where('a.id=:ageId', array(':ageId' => $id))
             ->queryAll();
+//        print_r($top5categories);die;
         //get top5games foreach top5category
         $catsCount = count($top5categories);
         for($i = 0; $i < $catsCount; $i++) {
@@ -66,6 +67,7 @@ class AgelevelController extends Controller {
                 ->queryAll();
             $top5categories[$i]['games'] = $top5games;
         }
+//        print_r($top5categories);die;
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
         $this->render('view', array(

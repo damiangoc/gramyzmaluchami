@@ -55,16 +55,22 @@ class CategoryController extends Controller {
             ->where('c.id=:id', array(':id' => $id))
             ->order('g.id')
             ->queryAll();
-
-        $pages =new CPagination(count($games));
-        $pages->setPageSize($this->page_size);
-        $this->render('view', array(
-            'categoryData' => $games[0],
-            'results' => $games, 
-            'phrase' => $name,
-            'pages' => $pages,
-            'item_count' => count($games),
-        ));
+        $gamesCount = count($games);
+        if ($gamesCount) {
+            $pages =new CPagination(count($games));
+            $pages->setPageSize($this->page_size);
+            $this->render('view', array(
+                'categoryData' => $games[0],
+                'results' => $games, 
+                'phrase' => $name,
+                'pages' => $pages,
+                'item_count' => count($games),
+            ));
+        } else {
+            $this->render('view', array(
+                'errorMessage' => 'Przepraszamy. Chwilowo brak gier dla wybranej kategorii.'
+            ));
+        }
     }
 
     /**
