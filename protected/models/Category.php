@@ -99,4 +99,19 @@ class Category extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getCategories()
+        {
+            $categories = Yii::app()->db->createCommand()
+                ->select('c.id, c.name, a.menuTitle')
+                ->from('category c')
+                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->order('a.id')
+                ->queryAll();
+            $tmp = array();
+            foreach($categories as $category){
+                $tmp[] = array($category['id'] => $category['name']. ' (' .$category['menuTitle'] . ')');
+            }
+            return $tmp;
+        }
 }

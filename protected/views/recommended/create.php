@@ -4,12 +4,8 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Recommended', 'url'=>array('index')),
-	array('label'=>'Manage Recommended', 'url'=>array('admin')),
-);
 ?>
 
 <h1>Create Recommended</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_form', array('model'=>$model, 'games' => $games)); ?>

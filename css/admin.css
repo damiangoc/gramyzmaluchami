@@ -1,0 +1,26 @@
+/* 
+    Document   : admin.css
+    Created on : 2012-12-15, 17:58:58
+    Author     : Damian
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.db-content { 
+    float: left;
+    width: 730px;
+    padding: 10px;
+}
+.db-operations {
+    float: left;
+    width: 200px;
+    padding: 10px;
+}
+.db-container {
+    background: #FFF;
+    overflow: hidden;
+    width: 970px;
+}
+.db-sidebar {
+    padding: 0px;
+}

@@ -1,6 +1,6 @@
 <?php
-Yii::app()->clientScript->registerCssFile('/css/roundedbox.css');
 Yii::app()->clientScript->registerCssFile('/css/searchpage.css');
+Yii::app()->clientScript->registerCssFile('/css/roundedbox.css');
 
 $this->widget('zii.widgets.CLeftMenu');
 

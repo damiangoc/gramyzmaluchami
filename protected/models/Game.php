@@ -94,4 +94,38 @@ class Game extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getGames()
+        {
+            $games = Yii::app()->db->createCommand()
+                ->select('g.id, g.name, c.name as catname, a.menuTitle')
+                ->from('game g')
+                ->join('category c', 'c.id = g.categoryId')
+                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->order('c.agelevelId')
+                ->queryAll();
+            $tmp = array();
+            foreach($games as $game){
+                $tmp[] = array($game['id'] => $game['name']. ' (' . $game['catname'] .' - '. $game['menuTitle'] . ')');
+            }
+            return $tmp;
+        }
+
+        public function getGamesForCat($categoryId)
+        {
+            $games = Yii::app()->db->createCommand()
+                ->select('g.id, g.name, c.name as catname, a.menuTitle')
+                ->from('game g')
+                ->join('category c', 'c.id = g.categoryId')
+                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->where('g.categoryId=:catId', array(':catId' => $categoryId))
+                ->order('c.agelevelId')
+                ->queryAll();
+            $tmp = array();
+            foreach($games as $game){
+                $tmp[] = array('id' => $game['id'], 'gameName' => $game['name'], 'categoryName' => $game['catname'], 'agelevelTitle' => $game['menuTitle']);
+            }
+            return $tmp;
+        }
+
 }

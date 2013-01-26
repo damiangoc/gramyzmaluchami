@@ -31,7 +31,6 @@ class SiteController extends Controller {
             ->from('top5category t')
             ->join('agelevel a', 't.agelevelId=a.id')
             ->join('category c', 't.categoryId=c.id')
-            ->where('position IN (1,2)')
             ->order('t.agelevelId')
             ->queryAll();
         //get top5games foreach top5category

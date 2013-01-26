@@ -6,7 +6,6 @@ class RecommendedController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -72,9 +71,13 @@ class RecommendedController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
+                
+                $game = new Game();
+                $games = $game->getGames();
+                
 		$this->render('create',array(
 			'model'=>$model,
+                        'games' => $games,
 		));
 	}
 

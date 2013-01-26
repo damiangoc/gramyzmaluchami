@@ -1,12 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'Categories'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Category', 'url'=>array('index')),
-	array('label'=>'Create Category', 'url'=>array('create')),
+    'Categories'=>array('index'),
+    'Manage',
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -24,7 +19,6 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Manage Categories</h1>
-
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.

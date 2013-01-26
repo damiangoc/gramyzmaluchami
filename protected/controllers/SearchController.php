@@ -12,16 +12,24 @@ class SearchController extends Controller {
     public function actionIndex()
     {
         if ($_GET) {
-        $phrase = $_GET['phrase'];
+            $agelevel = (integer)$_GET['agelevel'];
+            $phrase = $_GET['phrase'];
+            $where = array( 'or',
+                array('like', 'g.name', '%' . $phrase . '%'),
+                array('like', 'g.description', '%' . $phrase . '%'),array(':phrase', $phrase)
+            );
+            if ($agelevel) {
+                $where = array('and', 'a.id='.$agelevel, array( 'or',
+                    array('like', 'g.name', '%' . $phrase . '%'),
+                    array('like', 'g.description', '%' . $phrase . '%'),array(':phrase', $phrase)
+                ));
+            }
             $results = Yii::app()->db->createCommand()
                 ->select('g.id, g.name, g.description, c.name as catname, a.menuTitle')
                 ->from('game g')
                 ->join('category c', 'g.categoryId=c.id')
                 ->join('agelevel a', 'c.agelevelId=a.id')
-                ->where(array ( 'or',
-                    array('like', 'g.name', '%' . $phrase . '%'),
-                    array('like', 'g.description', '%' . $phrase . '%')
-                ), array(':phrase', $phrase))
+                ->where($where)
                 ->queryAll();
             //get top5games foreach top5category
         }

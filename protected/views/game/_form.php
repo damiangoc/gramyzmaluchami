@@ -11,7 +11,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'categoryId'); ?>
-		<?php echo $form->textField($model,'categoryId'); ?>
+                <?php echo $form->dropDownList($model,'categoryId',$categories) ?>
+		<?php // echo $form->textField($model,'categoryId'); ?>
 		<?php echo $form->error($model,'categoryId'); ?>
 	</div>
 
@@ -21,12 +22,22 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'description'); ?>
-	</div>
+        <div class="tinymce">
 
+                <?php echo $form->labelEx($model,'description'); ?><br />
+<?php
+Yii::import('ext.krichtexteditor.KRichTextEditor');
+$this->widget('KRichTextEditor', array(
+    'model' => $model,
+    'value' => $model->isNewRecord ? '' : $model->description,
+    'attribute' => 'description',
+    'options' => array(
+        'theme_advanced_resizing' => 'true',
+        'theme_advanced_statusbar_location' => 'bottom',
+    ),
+));?>  
+<?php echo $form->error($model,'description'); ?>
+        </div>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

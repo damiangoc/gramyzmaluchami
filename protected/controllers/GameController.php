@@ -46,7 +46,7 @@ class GameController extends Controller {
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id, $name) {
+    public function actionView($id, $name='') {
         $game = Yii::app()->db->createCommand()
             ->select('g.name, g.description, a.id as menuId, a.menuTitle, c.id as catid, c.name as catname')
             ->from('game g')
@@ -74,11 +74,14 @@ class GameController extends Controller {
         if (isset($_POST['Game'])) {
             $model->attributes = $_POST['Game'];
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
+        $cat = new Category();
+        $categories = $cat->getCategories();
 
         $this->render('create', array(
             'model' => $model,
+            'categories' => $categories,
         ));
     }
 
@@ -98,9 +101,12 @@ class GameController extends Controller {
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
+        $cat = new Category();
+        $categories = $cat->getCategories();
 
         $this->render('update', array(
             'model' => $model,
+            'categories' => $categories,
         ));
     }
 

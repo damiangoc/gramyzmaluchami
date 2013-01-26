@@ -27,7 +27,7 @@ class Top5gameController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','getGamesForCategory'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -72,9 +72,16 @@ class Top5gameController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
+                $cat = new Category();
+                $categories = $cat->getCategories();
+                
+                $game = new Game();
+                $games = $game->getGames();
+                
 		$this->render('create',array(
 			'model'=>$model,
+                        'categories' => $categories,
+                        'games' => $games,
 		));
 	}
 
@@ -96,9 +103,17 @@ class Top5gameController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+                $cat = new Category();
+                $categories = $cat->getCategories();
+                
+                $game = new Game();
+                $games = $game->getGames();
+                
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'categories' => $categories,
+                        'games' => $games,
 		));
 	}
 
@@ -173,4 +188,13 @@ class Top5gameController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+        public function actionGetGamesForCategory($categoryId)
+        {
+            header('Content-type: application/json');
+            $gamesObj = new Game();
+            $games = $gamesObj->getGamesForCat($categoryId);
+            echo CJSON::encode($games);
+            Yii::app()->end();
+        }
 }

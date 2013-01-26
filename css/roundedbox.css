@@ -1,11 +1,16 @@
 .roundedbox {
     float: left;
-    width: 273px;
+    height: 144px;
     margin: 0 0 10px 10px;
     border: 1px solid #85bad8;
     border-radius: 5px 5px 5px 5px;
     padding: 10px;
     background-color: #d0d9ff;
+    min-width: 272px;
+}
+
+.roundedbox .gamedescr {
+    height: 92px;
 }
 
 .roundedbox .title-right {
@@ -52,7 +57,7 @@
 }
 .roundedbox .more-link {
     float: right;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 .roundedbox .more-link a {
     color: #BC0101;

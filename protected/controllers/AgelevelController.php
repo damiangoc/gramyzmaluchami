@@ -55,24 +55,42 @@ class AgelevelController extends Controller {
 //        print_r($top5categories);die;
         //get top5games foreach top5category
         $catsCount = count($top5categories);
-        for($i = 0; $i < $catsCount; $i++) {
-            $top5games = Yii::app()->db->createCommand()
-                ->select('g.id, g.name, g.description, tg.position')
-                ->from('top5game tg')
-                ->join('category c', 'tg.categoryId=c.id')
-                ->join('game g', 'tg.gameId=g.id')
-                ->where('tg.categoryId=:catId', array(':catId' => $top5categories[$i]['id']))
-                ->order('position ASC')
-                ->limit('5')
-                ->queryAll();
-            $top5categories[$i]['games'] = $top5games;
+        if (!$catsCount) {
+            $this->render('view', array(
+                'errorMessage' => 'Przepraszamy. Chwilowo brak gier dla wybranej kategorii wiekowej.'
+            ));
+        } else {
+            for($i = 0; $i < $catsCount; $i++) {
+                $top5games = Yii::app()->db->createCommand()
+                    ->select('g.id, g.name, g.description, tg.position')
+                    ->from('top5game tg')
+                    ->join('category c', 'tg.categoryId=c.id')
+                    ->join('game g', 'tg.gameId=g.id')
+                    ->where('tg.categoryId=:catId', array(':catId' => $top5categories[$i]['id']))
+                    ->order('position ASC')
+                    ->limit('5')
+                    ->queryAll();
+                if (count($top5games)){
+                    $top5categories[$i]['games'] = $top5games;
+                    continue;
+                }
+                // if there is no top5games for category get first 5 games
+                $first5games = Yii::app()->db->createCommand()
+                    ->select('g.id, g.name, g.description')
+                    ->from('game g')
+                    ->join('category c', 'c.id=g.categoryId')
+                    ->where('g.categoryId=:catId', array(':catId' => $top5categories[$i]['id']))
+                    ->order('g.id DESC')
+                    ->limit('5')
+                    ->queryAll();
+                $top5categories[$i]['games'] = $first5games;
+            }
+            // renders the view file 'protected/views/site/index.php'
+            // using the default layout 'protected/views/layouts/main.php'
+            $this->render('view', array(
+                'top5boxes' => $top5categories,
+            ));
         }
-//        print_r($top5categories);die;
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('view', array(
-            'top5boxes' => $top5categories,
-        ));
     }
 
     /**

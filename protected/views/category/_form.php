@@ -11,7 +11,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'agelevelId'); ?>
-		<?php echo $form->textField($model,'agelevelId'); ?>
+                <?php echo $form->dropDownList($model,'agelevelId',$agelevels) ?>
+		<?php //echo $form->textField($model,'agelevelId'); ?>
 		<?php echo $form->error($model,'agelevelId'); ?>
 	</div>
 

@@ -72,9 +72,16 @@ class Top5categoryController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+                $agelevel = new Agelevel();
+                $agelevelList = $agelevel->getAgelevels();
 
-		$this->render('create',array(
+                $cat = new Category();
+                $categories = $cat->getCategories();
+		
+                $this->render('create',array(
 			'model'=>$model,
+                        'agelevels' => $agelevelList,
+                        'categories' => $categories,
 		));
 	}
 

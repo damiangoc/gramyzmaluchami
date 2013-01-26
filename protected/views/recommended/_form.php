@@ -11,7 +11,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'gameId'); ?>
-		<?php echo $form->textField($model,'gameId'); ?>
+		<?php //echo $form->textField($model,'gameId'); ?>
+                <?php echo $form->dropDownList($model,'gameId',$games) ?>
 		<?php echo $form->error($model,'gameId'); ?>
 	</div>
 

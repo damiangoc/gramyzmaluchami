@@ -46,7 +46,7 @@ class CategoryController extends Controller {
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
      */
-    public function actionView($id, $name) {
+    public function actionView($id, $name="") {
         $games = Yii::app()->db->createCommand()
             ->select('c.name as categoryname, c.description as catdescr, c.id as catid,g.id, g.name, g.description, a.id as menuId, a.menuTitle')
             ->from('category c')
@@ -86,11 +86,14 @@ class CategoryController extends Controller {
         if (isset($_POST['Category'])) {
             $model->attributes = $_POST['Category'];
             if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('admin'));
         }
+        $agelevel = new Agelevel();
+        $agelevelList = $agelevel->getAgelevels();
 
         $this->render('create', array(
             'model' => $model,
+            'agelevels' => $agelevelList,
         ));
     }
 
@@ -110,9 +113,12 @@ class CategoryController extends Controller {
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
+        $agelevel = new Agelevel();
+        $agelevelList = $agelevel->getAgelevels();
 
         $this->render('update', array(
             'model' => $model,
+            'agelevels' => $agelevelList,
         ));
     }
 

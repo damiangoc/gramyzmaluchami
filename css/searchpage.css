@@ -1,12 +1,14 @@
 .roundedbox {
-    height: 120px;
     width: 360px;
 }
 
 .roundedbox .gamedescr {
     margin-top: 5px;
-    height: 48px;
     clear: both;
+    height: 72px;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #content .center-content {

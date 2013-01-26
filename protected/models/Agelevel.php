@@ -86,4 +86,18 @@ class Agelevel extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getAgelevels()
+        {
+            $agelevels = Yii::app()->db->createCommand()
+                ->select('a.id, a.menuTitle')
+                ->from('agelevel a')
+                ->order('a.id')
+                ->queryAll();
+            $tmp = array();
+            foreach($agelevels as $agelevel){
+                $tmp[] = array($agelevel['id'] => $agelevel['menuTitle']);
+            }
+            return $tmp;
+        }
 }
