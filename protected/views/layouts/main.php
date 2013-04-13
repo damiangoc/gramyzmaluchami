@@ -65,9 +65,16 @@
             <?php echo $content; ?>
 
             <div id="footer">
-                Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+                <div>
+                    Na naszej stronie zgromadziliśmy całe mnóstwo zabaw i gier, w które możecie bawić się ze swoim dzieckiem. 
+                    Znajdziecie tutaj również popularne bajki i wiersze, które wasze dziecko będzie słuchać z przyjemnością.
+                    Abyście łatwo mogli wyszukać interesujące gry i zabawy, pogrupowaliśmy je w kategorie wiekowe oraz tematyczne.
+                    Życzymy miłej zabawy i zachęcamy do częstych odwiedzin!
+                </div>
+                <hr></hr>
+                <div>Copyright &copy; <?php echo date('Y'); ?> by dagoIT.<br/>
                 All Rights Reserved.<br/>
-<?php echo Yii::powered(); ?>
+                </div>
             </div><!-- footer -->
 
         </div><!-- page -->

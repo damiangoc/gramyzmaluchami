@@ -1,22 +1,27 @@
-
 <?php
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+Yii::app()->clientScript->registerCssFile('/css/contact.css');
+$this->pageTitle=Yii::app()->name . ' - Napisz do nas';
 $this->breadcrumbs=array(
 	'Contact',
 );
-Yii::app()->clientScript->registerCssFile('/css/contact.css');
 ?>
-<div id="contact-form">
-    <h1>Contact Us</h1>
+<div id="contact">
+    <h1>Napisz do nas</h1>
+
     <?php if(Yii::app()->user->hasFlash('contact')): ?>
+
     <div class="flash-success">
             <?php echo Yii::app()->user->getFlash('contact'); ?>
     </div>
+
     <?php else: ?>
+
     <p>
-    If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+    Jeśli masz jakieś pytania lub propozycje zabaw, napisz do nas. Dziękujemy.
     </p>
+
     <div class="form">
+
     <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'contact-form',
             'enableClientValidation'=>true,
@@ -24,6 +29,7 @@ Yii::app()->clientScript->registerCssFile('/css/contact.css');
                     'validateOnSubmit'=>true,
             ),
     )); ?>
+
             <p class="note">Fields with <span class="required">*</span> are required.</p>
 
             <?php echo $form->errorSummary($model); ?>
@@ -73,5 +79,5 @@ Yii::app()->clientScript->registerCssFile('/css/contact.css');
 
     </div><!-- form -->
 
-    <?php endif; ?>
+<?php endif; ?>
 </div>

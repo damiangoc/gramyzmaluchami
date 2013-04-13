@@ -6,7 +6,7 @@ Yii::app()->clientScript->registerCssFile('/css/searchpage.css');
 
 echo '<div class="center-content">';
     $this->widget('zii.widgets.CAds728x90', array(
-        'dataProvider' => 'aaaaaaaaa'));
+        'dataProvider' => 'Miejce na Twoją reklamę'));
     $this->widget('zii.widgets.CSearchForm', array(
         'htmlOptions' => array('class' => 'horizontal-form')));
     if (count($results)) {
