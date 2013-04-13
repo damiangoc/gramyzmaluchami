@@ -105,7 +105,7 @@ class Category extends CActiveRecord
             $categories = Yii::app()->db->createCommand()
                 ->select('c.id, c.name, a.menuTitle')
                 ->from('category c')
-                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->join('agelevel a', 'a.id=c.agelevelId')
                 ->order('a.id')
                 ->queryAll();
             $tmp = array();

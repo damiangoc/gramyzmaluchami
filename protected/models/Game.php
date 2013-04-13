@@ -101,7 +101,7 @@ class Game extends CActiveRecord
                 ->select('g.id, g.name, c.name as catname, a.menuTitle')
                 ->from('game g')
                 ->join('category c', 'c.id = g.categoryId')
-                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->join('agelevel a', 'a.id=c.agelevelId')
                 ->order('c.agelevelId')
                 ->queryAll();
             $tmp = array();
@@ -117,7 +117,7 @@ class Game extends CActiveRecord
                 ->select('g.id, g.name, c.name as catname, a.menuTitle')
                 ->from('game g')
                 ->join('category c', 'c.id = g.categoryId')
-                ->join('ageLevel a', 'a.id=c.agelevelId')
+                ->join('agelevel a', 'a.id=c.agelevelId')
                 ->where('g.categoryId=:catId', array(':catId' => $categoryId))
                 ->order('c.agelevelId')
                 ->queryAll();

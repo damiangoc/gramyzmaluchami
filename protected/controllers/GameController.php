@@ -51,7 +51,7 @@ class GameController extends Controller {
             ->select('g.name, g.description, a.id as menuId, a.menuTitle, c.id as catid, c.name as catname')
             ->from('game g')
             ->join('category c', 'c.id=g.categoryId')
-            ->join('ageLevel a', 'a.id=c.agelevelId')
+            ->join('agelevel a', 'a.id=c.agelevelId')
             ->where('g.id=:id', array(':id' => $id))
             ->order('g.id')
             ->queryRow();
